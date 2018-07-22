@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Work</title>
+        <%= csrf_meta_tags %>
+
+        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    </head>
+
+    <body>
+        <div class="container">
+            <h1>お問い合わせ</h1>
+
+            <div class="menu">
+                <%= link_to 'お問い合わせフォーム', new_contact_path, class: 'btn btn-default' %></li>
+                <%= link_to 'お問い合わせ一覧', contacts_path, class: 'btn btn-default' %></li>
+            </div>
+
+            <%= yield %>
+        </div>
+    </body>
+</html>

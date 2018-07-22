@@ -1,0 +1,47 @@
+<div>
+    <div>
+
+        <div>
+            <label for="input_name" class="control-label">名前</label>
+            <div>
+                <%= @contact.name %>
+            </div>
+        </div>
+
+        <div>
+            <label for="input_email" class="control-label">メールアドレス</label>
+            <div>
+                <%= @contact.email %>
+            </div>
+        </div>
+
+        <div>
+            <label for="input_contact_type" class="control-label">問い合わせ種類</label>
+            <div>
+                <%= @contact.contact_type %>
+            </div>
+        </div>
+
+        <div>
+            <label for="input_content" class="control-label">問い合わせ内容</label>
+            <div>
+                <%= simple_format(h(@contact.content)) %>
+            </div>
+        </div>
+
+        <%= form_for @contact, url: contacts_path, html: {method: "post"} do |f|  %>
+            <%= f.hidden_field :name %>
+            <%= f.hidden_field :email %>
+            <%= f.hidden_field :contact_type %>
+            <%= f.hidden_field :content %>
+
+            <div>
+                <div class="submit-btn">
+                    <%= f.submit '戻る', name: 'back', class: 'btn btn-default btn-back btn-block' %>
+                    <%= f.submit '送信', class: 'btn btn-default btn-block' %>
+                </div>
+            </div>
+
+        <% end %>
+    </div>
+</div>

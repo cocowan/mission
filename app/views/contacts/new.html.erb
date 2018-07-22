@@ -1,0 +1,55 @@
+<div>
+    <div>
+
+        <%= form_for @contact, url: confirm_contacts_path, html: {method: "post"} do |f|  %>
+
+        <% if @contact.errors.any? %>
+          <div class="alert-danger">
+            <p><%= @contact.errors.count %>件のエラーがあります</p>
+
+            <ul>
+            <% @contact.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div>
+            <label for="input_name" class="control-label">名前</label>
+            <div>
+                <%= f.text_field :name, class: 'form-control', id: 'login_name', placeholder: 'Name' %>
+            </div>
+        </div>
+
+        <div>
+            <label for="input_email" class="control-label">メールアドレス</label>
+            <div>
+                <%= f.email_field :email, class: 'form-control', id: 'login_name', placeholder: 'example@gmail.com' %>
+            </div>
+        </div>
+
+        <div>
+            <label for="input_contact_type" class="control-label">問い合わせ種類</label>
+            <div>
+                <%= f.select :contact_type, Contact.contact_types.keys.to_a, {}, class: 'form-control' %>
+            </div>
+        </div>
+
+        <div>
+            <label for="input_content" class="control-label">問い合わせ内容</label>
+            <div>
+                <%= f.text_area :content %>
+            </div>
+        </div>
+
+        <div>
+            <div class="submit-btn">
+                <%= f.submit '確認', class: 'btn btn-default btn-block' %>
+            </div>
+        </div>
+
+        <% end %>
+
+    </div>
+</div>
